@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-core
+langchain-openai
+langchain-groq
+langgraph
+langchain-google-genai
+fastapi
+python-dotenv
+uvicorn
+watchdog
+langchain-cli[inmem]
