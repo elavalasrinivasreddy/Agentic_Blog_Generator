@@ -19,16 +19,28 @@ async def blog_content(request: Request):
     try:
         request_body = await request.json()
         topic = request_body.get("topic")
-        language = request_body.get("language")
-        if topic:   
-            blog_generator = AgenticBlogGraph()
-            graph = blog_generator.build_graph()
-            result = graph.invoke({"topic": topic, "language":language})
-            return {"data":result,"status":200,"message":"Blog content generated successfully"}
-        else:
-            return {"data":None,"status":400,"message":"Topic is required"}
+        language = request_body.get("language", "English") # Default to English
+        
+        if not topic:
+            return {"data": None, "status": 400, "message": "Topic is required"}
+            
+        blog_generator = AgenticBlogGraph()
+        graph = blog_generator.build_graph()
+        
+        # Initialize state
+        result = graph.invoke({"topic": topic, "language": language})
+        
+        return {
+            "data": result,
+            "status": 200,
+            "message": "Blog content generated successfully"
+        }
     except Exception as e:
-        raise ValueError(f"Error occured while generating blog content: {e}")
+        return {
+            "data": None,
+            "status": 500,
+            "message": f"Error occurred while generating blog content: {str(e)}"
+        }
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="localhost", port=8000,reload=True) 
