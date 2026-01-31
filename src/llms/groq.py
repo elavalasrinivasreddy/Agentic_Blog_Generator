@@ -3,8 +3,8 @@ from dot_env import load_dotenv
 import os
 from langchain_groq import ChatGroq
 
-class groq_model:
-    def __ini__(self):
+class Groq:
+    def __init__(self):
         load_dotenv()
 
     def get_llm(self):

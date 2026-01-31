@@ -6,7 +6,7 @@ class Blog(BaseModel):
     title: str = Field(description="The title of the blog.")
     content: str = Field(description="The main content of the blog.")
 
-class Blog_State(TypedDict):
+class BlogState(TypedDict):
     topic: str
-    Blog: Blog
+    blog: Blog
     language: str
