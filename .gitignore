@@ -1,0 +1,7 @@
+# ignore python files and env files
+*.env
+__pycache__
+.venv
+.env.example
+.env.local
+.env.prod
