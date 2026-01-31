@@ -1,0 +1,9 @@
+{
+    "dependencies": [
+        "."
+    ],
+    "graphs": {
+        "Agentic_Blog_Generator": "./src/graphs/blog_generator_graph.py:graph"
+    },
+    "env": "./.env"
+}

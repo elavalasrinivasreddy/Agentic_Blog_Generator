@@ -24,3 +24,6 @@ class AgenticBlogGraph:
         self.graph.add_edge("content_generator", END)
 
         return self.graph.compile()
+
+# Below code for langsmith debugging purpose
+graph = AgenticBlogGraph().build_graph()
