@@ -1,4 +1,3 @@
-from sphinx.search import languages
 from typing_extensions import TypedDict
 from pydantic import BaseModel, Field
 
@@ -9,4 +8,4 @@ class Blog(BaseModel):
 class BlogState(TypedDict):
     topic: str
     blog: Blog
-    language: str
+    content_language: str

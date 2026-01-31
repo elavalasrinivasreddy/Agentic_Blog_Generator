@@ -1,5 +1,5 @@
 from openai import api_key
-from dot_env import load_dotenv
+from dotenv import load_dotenv
 import os
 from langchain_groq import ChatGroq
 
@@ -12,7 +12,7 @@ class Groq:
         This function returns the llm model
         """
         try:
-            os.environ["GROQ_API_KEY"] = self.GROQ_API_KEY = os.get_env("GROQ_API_KEY")
+            os.environ["GROQ_API_KEY"] = self.GROQ_API_KEY = os.getenv("GROQ_API_KEY")
             llm = ChatGroq(
                 model = "llama-3.1-8b-instant",
                 api_key = self.GROQ_API_KEY
