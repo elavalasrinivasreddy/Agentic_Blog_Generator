@@ -10,7 +10,7 @@ class BlogNode:
         """
         try:
             prompt = f"""
-            Generate a catchy and relevant title for a blog post about {state['topic']}.
+            Generate a catchy and relevant title for a blog post about {state['topic']} in language {state['language']}.
             The title should be engaging and suitable for a general audience.
             Return only the title, without any additional text in markdown format.
             """
@@ -25,10 +25,9 @@ class BlogNode:
         """
         try:
             prompt = f"""
-            Generate a catchy and relevant content for a blog post about {state['topic']} .
-            The content should be engaging and suitable for below title.
-            Return only the content, without any additional text including title(do not include title in output) in markdown format.
-            Title: {state['blog']['title']} 
+            Generate a catchy and relevant content for a blog post about {state['topic']} in langauge {state['language']} for the title {state['blog']['title']}.
+            The content should be engaging and suitable for given title.
+            Return only the content, without any additional text(including title) in markdown format.
             """
             response = self.llm.invoke(prompt)
             return {"blog": {"title":state['blog']['title'],"content":response.content}}

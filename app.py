@@ -14,15 +14,16 @@ os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
 @app.post("/blog_content")
 async def blog_content(request: Request):
     """
-    This function generates the blog content based on user topic
+    This function calls the blog generation graph by providing user topic and language.
     """
     try:
         request_body = await request.json()
         topic = request_body.get("topic")
+        language = request_body.get("language")
         if topic:   
             blog_generator = AgenticBlogGraph()
             graph = blog_generator.build_graph()
-            result = graph.invoke({"topic": topic})
+            result = graph.invoke({"topic": topic, "language":language})
             return {"data":result,"status":200,"message":"Blog content generated successfully"}
         else:
             return {"data":None,"status":400,"message":"Topic is required"}
